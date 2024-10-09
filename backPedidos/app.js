@@ -2,11 +2,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
 var usersRouter = require('./routes/users');
+
+const pedidosRouter = require('./routes/pedidos');
+
 var usuariosRouter = require('./routes/usuarios');
+
 
 var app = express();
 
@@ -16,8 +21,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cors());
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.use('/pedidos', pedidosRouter);
+
 app.use('/usuarios', usuariosRouter);
 app.use('/auth', authRouter); 
 
@@ -45,6 +55,7 @@ app.use('/auth', authRouter);
 //         })
 //     } 
 // } 
+
 
 
 module.exports = app;
