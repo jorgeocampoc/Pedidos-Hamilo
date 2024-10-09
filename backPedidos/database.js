@@ -16,4 +16,8 @@ var connection = mysql.createConnection({
 // hola como estas
 // daro 
 
+
+
+//WAAAAAA.......!!! 
+//WA PASAR.....
 module.exports = connection;
