@@ -5,8 +5,13 @@ var logger = require('morgan');
 const cors = require('cors');
 
 var indexRouter = require('./routes/index');
+var authRouter = require('./routes/auth');
 var usersRouter = require('./routes/users');
+
 const pedidosRouter = require('./routes/pedidos');
+
+var usuariosRouter = require('./routes/usuarios');
+
 
 var app = express();
 
@@ -20,6 +25,37 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 app.use('/pedidos', pedidosRouter);
+
+app.use('/usuarios', usuariosRouter);
+app.use('/auth', authRouter); 
+
+
+// function verifyToken(req, res, next){
+//     const authHeader = req.headers['authorization'];
+//     console.log(authHeader);
+//     if(authHeader){
+//         const token = authHeader.split(' ')[1]; 
+//         jwt.verify(token, 'secretKey',(err, user)=>{
+//             if( err ){
+//                 return res.status(403).json({
+//                     ok:false,
+//                     msg:'Token invalido'
+//                 })
+//             }else{
+//                 req.user =user;
+//                 next();
+//             }
+//         })
+//     }else{
+//         return res.status(403).json({
+//             ok:false,
+//             msg:'Sin token'
+//         })
+//     } 
+// } 
+
+
 
 module.exports = app;
