@@ -427,7 +427,7 @@ const registrarPedido = async () => {
     console.log(data);
 
     reset();
-    var myModalEl = document.getElementById("modalConfirmar");
+    var myModalEl = document.getElementById("modalEnviar");
     var modal = bootstrap.Modal.getInstance(myModalEl);
     modal.hide();
   } catch (error) {
