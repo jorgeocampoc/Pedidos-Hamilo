@@ -24,9 +24,10 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
-  const { producto_id, cliente_id, vendedor_id, comentario, fecha_pedido, fecha_entrega, coordenadas, direccion } = req.body;
+  const fechaHoy = new Date().toISOString().slice(0, 19).replace("T", " ");
+  const { producto_id, cliente_id, vendedor_id, comentario, fecha_entrega, coordenadas, direccion } = req.body;
 
-  var query = `INSERT INTO pedidos (producto_id, cliente_id, vendedor_id,comentario,fecha_pedido,fecha_entrega, coordenadas, direccion) VALUES ("${producto_id}","${cliente_id}","${vendedor_id}","${comentario}","${fecha_pedido}","${fecha_entrega}","${coordenadas}", "${direccion}");`;
+  var query = `INSERT INTO pedidos (producto_id, cliente_id, vendedor_id,comentario,fecha_pedido,fecha_entrega, coordenadas, direccion) VALUES ("${producto_id}","${cliente_id}","${vendedor_id}","${comentario}","${fechaHoy}","${fecha_entrega}","${coordenadas}", "${direccion}");`;
 
   // ejecutamos la consulta
   conexion.query(query, function (error, results, fields) {
