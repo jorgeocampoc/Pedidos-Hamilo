@@ -1,5 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { useRouter } from 'vue-router'
+  const route = useRouter();
 </script>
 
 <template>
@@ -7,8 +9,10 @@ import { RouterLink, RouterView } from 'vue-router'
     <header>
 
 
-<nav>
+<nav v-if="route.currentRoute.value.path !== '/login'">
   <RouterLink to="/">Home</RouterLink>
+  <!-- <RouterLink to="/login">Login</RouterLink> -->
+
 </nav>
 </header>
 
