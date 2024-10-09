@@ -8,6 +8,6 @@ var connection = mysql.createConnection({
   database: process.env.DB_DATABASE || 'sistema_pedidos'
 });
 // hola
-
+// hola como estas
 
 module.exports = connection;
