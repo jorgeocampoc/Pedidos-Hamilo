@@ -9,5 +9,5 @@ var connection = mysql.createConnection({
 });
 // hola
 // hola como estas
-
+// daro 
 module.exports = connection;
