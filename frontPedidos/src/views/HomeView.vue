@@ -163,24 +163,26 @@
           <div class="modal-body">
             <h3>Detalles</h3>
             <table>
-              <tr>
-                <th>Codigo:</th>
-                <td>{{ seleccionado.codigo }}</td>
-              </tr>
-              <tr>
-                <th>Nombre:</th>
-                <td>{{ seleccionado.nombre_producto }}</td>
-              </tr>
-              <tr>
-                <th>Descripcion:</th>
-                <td>{{ seleccionado.descripcion }}</td>
-              </tr>
-              <tr>
-                <th>Imagen:</th>
-                <td>
-                  <img :src="seleccionado.imagen" width="100" height="100" />
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <th>Codigo:</th>
+                  <td>{{ seleccionado.codigo }}</td>
+                </tr>
+                <tr>
+                  <th>Nombre:</th>
+                  <td>{{ seleccionado.nombre_producto }}</td>
+                </tr>
+                <tr>
+                  <th>Descripcion:</th>
+                  <td>{{ seleccionado.descripcion }}</td>
+                </tr>
+                <tr>
+                  <th>Imagen:</th>
+                  <td>
+                    <img :src="seleccionado.imagen" width="100" height="100" />
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <div class="modal-footer">
@@ -309,40 +311,42 @@
           <div class="modal-body">
             <h3>Detalles</h3>
             <table>
-              <tr>
-                <th>Codigo:</th>
-                <td>{{ seleccionado.codigo }}</td>
-              </tr>
-              <tr>
-                <th>Nombre:</th>
-                <td>{{ seleccionado.nombre_producto }}</td>
-              </tr>
-              <tr>
-                <th>Descripcion:</th>
-                <td>{{ seleccionado.descripcion }}</td>
-              </tr>
-              <tr>
-                <th>Imagen:</th>
-                <td>
-                  <img :src="seleccionado.imagen" width="100" height="100" />
-                </td>
-              </tr>
-              <tr>
-                <th>Comentarios:</th>
-                <td>{{ comentarios }}</td>
-              </tr>
-              <tr>
-                <th>Fecha entrega:</th>
-                <td>{{ fecha_entrega }}</td>
-              </tr>
-              <tr>
-                <th>Coordenadas:</th>
-                <td>{{ coordenadas }}</td>
-              </tr>
-              <tr>
-                <th>Direccion:</th>
-                <td>{{ direccion }}</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <th>Codigo:</th>
+                  <td>{{ seleccionado.codigo }}</td>
+                </tr>
+                <tr>
+                  <th>Nombre:</th>
+                  <td>{{ seleccionado.nombre_producto }}</td>
+                </tr>
+                <tr>
+                  <th>Descripcion:</th>
+                  <td>{{ seleccionado.descripcion }}</td>
+                </tr>
+                <tr>
+                  <th>Imagen:</th>
+                  <td>
+                    <img :src="seleccionado.imagen" width="100" height="100" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Comentarios:</th>
+                  <td>{{ comentarios }}</td>
+                </tr>
+                <tr>
+                  <th>Fecha entrega:</th>
+                  <td>{{ fecha_entrega }}</td>
+                </tr>
+                <tr>
+                  <th>Coordenadas:</th>
+                  <td>{{ coordenadas }}</td>
+                </tr>
+                <tr>
+                  <th>Direccion:</th>
+                  <td>{{ direccion }}</td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <div class="modal-footer">
