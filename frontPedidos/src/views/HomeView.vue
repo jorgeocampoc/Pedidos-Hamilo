@@ -15,7 +15,7 @@
       <div
         v-for="producto in productos"
         :key="producto.id"
-        class="card col-md-4 p-2 row m-1"
+        class="card col-md-2 p-2 m-1"
       >
         <img
           :src="producto.imagen"
