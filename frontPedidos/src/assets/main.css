@@ -1,5 +1,20 @@
 @import './base.css';
 
+.underline{
+    text-decoration: underline;
+    text-underline-offset: 7px;
+}
+
+.absolute-custom{
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
+}
+.active{
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 7px;
+}
 .btn-custom {
     --color: #088a69;
     --color2: rgb(10, 25, 30);

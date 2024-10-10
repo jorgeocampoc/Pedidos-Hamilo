@@ -40,7 +40,7 @@
           </button>
         </div>
 
-        <div class="mb-3 text-center absolute-custom">
+        <div class="mb-3 text-center absolute-custom2">
           <p class="text-white">
             ¿ No tienes una cuenta ?
             <label class="label ms-2 fw-bold" @click="ir('registrarse')"
@@ -136,7 +136,7 @@
               >Iniciar Sesion</label
             >
           </p>
-          <!-- <button @click="ir('login')" class="btn btn-outline-success absolute-custom-reg mb-3 ">Iniciar sesion</button> -->
+          <!-- <button @click="ir('login')" class="btn btn-outline-success absolute-custom2-reg mb-3 ">Iniciar sesion</button> -->
         </div>
       </div>
     </div>
@@ -293,12 +293,12 @@ const limpiar = () => {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.absolute-custom {
+.absolute-custom2 {
   position: absolute;
   bottom: 0;
   right: 25%;
 }
-.absolute-custom-reg {
+.absolute-custom2-reg {
   position: absolute;
   bottom: 0;
   left: 35%;
