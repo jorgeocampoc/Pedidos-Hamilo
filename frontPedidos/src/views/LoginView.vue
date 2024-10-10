@@ -78,7 +78,7 @@ import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useRouter } from 'vue-router'
-import { alertInfo } from '@/helpers/alerts';
+import { alertInfo,notyf,loading } from '@/helpers/alerts';
 const route = useRouter();
 const nombre = ref('');
 const correo = ref('');
@@ -90,13 +90,16 @@ const rol = ref('cliente');
 const tipoForm = ref('login');
 let baseURL = 'http://localhost:3000/auth';
 
+
+
 onMounted(() => {
     limpiar();
 })
 
 const ingresar = async () => {
     if (correo.value == '' || contrasena.value == '') {
-        alertInfo('Error','ingrese sus credenciales','error','Regresar')
+        // alertInfo('Error','ingrese sus credenciales','error','Regresar')
+        notyf.error('Credenciales requeridas');
         contrasena.value = ''
         return;
     }
@@ -111,31 +114,37 @@ const ingresar = async () => {
         console.log(data);
         localStorage.setItem('token', data.token);
         localStorage.setItem('usuario', JSON.stringify(data.usuario));
-        alertInfo('Usuario registrado',`El usuario ${data.nombre} se registro`,'success','Iniciar sesion')
+        loading()
         setTimeout(() => {
             route.push({ path: '/' });
-        }, 1000);
+        }, 1500);
 
     } catch (error) {
         console.log(error);
         console.log(error.response.data);
-        Swal.fire({
-            title: 'Error!',
-            text: error.response.data.message,
-            icon: 'error',
-        });
+        // Swal.fire({
+        //     title: 'Error!',
+        //     text: error.response.data.message,
+        //     icon: 'error',
+        // });
+        notyf.error('Usuario/contraseña no validos');
+        contrasena.value = ''
+
     }
 
 }
 
+
+
 const registrar = async () => {
     if (nombre.value == '' || correo.value == '' || telefono.value == '' || contrasena.value == '') {
-        alertInfo('Campos requerido','Todos los campos son requeridos','error','Regresar')
+        notyf.error('Las campos son requeridos');
         return;
     }
 
     if( contrasenaCon.value !== contrasena.value ){
-        alertInfo('Error','Las contraseñas no coinciden','error','Regresar');
+       
+        notyf.error('Las contraseñas no coinciden');
         contrasena.value = '';
         contrasenaCon.value = ''
         return;
