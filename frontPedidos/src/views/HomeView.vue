@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="container mt-3">
     <div class="row">
       <div class="d-flex justify-content-between">
         <h3>Productos</h3>

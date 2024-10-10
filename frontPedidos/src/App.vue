@@ -11,7 +11,7 @@ const route = useRouter();
         <!-- <RouterLink to="/login">Login</RouterLink> -->
       </nav>
     </header>
-    <main class="container mt-3">
+    <main>
       <RouterView />
     </main>
   </div>
