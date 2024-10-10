@@ -29,3 +29,25 @@ export const alertConfirm = (title,text,icon, confirmButtonText,route)=>{
         }
     });
 }
+export const loading = ()=>{
+    Swal.fire({
+        showConfirmButton: false,
+        timer: 2500,
+        background: 'transparent', 
+        backdrop: `
+            rgba(0,0,0,0.5)
+            url(https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87_w200.webp)
+            center center
+            no-repeat
+        `
+    });
+}
+
+export const notyf = new Notyf({
+    duration: 2500,
+    position: {
+        x: 'center',
+        y: 'center',
+    },
+
+});
