@@ -145,5 +145,29 @@ router.get("/usuario/:id", function (req, res, next) {
   });
 })
 
+router.get("/cliente/:id", function (req, res, next) {
+  var query = `SELECT pedidos.*, productos.nombre_producto AS producto_nombre, productos.imagen, usuarios.nombre AS vendedor, usuarios.telefono
+              FROM pedidos 
+              LEFT JOIN productos ON pedidos.producto_id = productos.id
+              LEFT JOIN usuarios ON pedidos.vendedor_id = usuarios.id
+               where pedidos.cliente_id = ${req.params.id}; `;
+  conexion.query(query, function (error, results, fields) {
+    if (error) {
+      console.log(error);
+      res.status(500).send({
+        error: error,
+        message: "Error al realizar la peticion",
+      });
+    } else {
+      console.log(results);
+      res.status(200).send({
+        data: results,
+        message: "Listando pedidos",
+      });
+    }
+  });
+})
+
+
 
 module.exports = router;

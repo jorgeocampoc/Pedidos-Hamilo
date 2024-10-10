@@ -58,7 +58,13 @@
     </div>
 
     <!--admin puede ver todos los productos-->
-    <div class="row" v-if="productos.length > 0 && usuario.rol == 'admin'">
+    <div
+      class="row"
+      v-if="
+        (productos.length > 0 && usuario.rol == 'admin') ||
+        usuario.rol == 'cliente'
+      "
+    >
       <div class="d-flex justify-content-between">
         <h3>Productos</h3>
         <button
@@ -200,6 +206,72 @@
       </div>
     </div>
 
+    <!--pedidos del cliente-->
+
+    <div
+      class="row"
+      v-if="pedidosCliente.length > 0 && usuario.rol == 'cliente'"
+    >
+      <div class="d-flex justify-content-between">
+        <h3>Pedidos</h3>
+      </div>
+      <div
+        v-for="pedidoCliente in pedidosCliente"
+        :key="pedidoCliente.id"
+        class="card col-md-4 p-2 m-1"
+      >
+        <div class="text-center">
+          <img
+            :src="pedidoCliente.imagen"
+            class=""
+            alt="imagen producto"
+            width="100"
+            height="auto"
+          />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <b> Producto: </b>{{ pedidoCliente.producto_nombre }}
+          </h5>
+          <div class="card-text">
+            <b> Comentario:</b> {{ pedidoCliente.comentario }}
+            <br />
+            <b> Direccion: </b>{{ pedidoCliente.direccion }}
+            <br />
+            <b> Fecha pedido:</b
+            >{{ new Date(pedidoCliente.fecha_pedido).toLocaleDateString() }}
+            <br />
+            <b> Fecha entrega:</b>
+            {{ new Date(pedidoCliente.fecha_entrega).toLocaleDateString() }}
+            <br />
+            <b>Cliente:</b> {{ pedidoCliente.vendedor }}
+            <br />
+            <b>Teléfono:</b> {{ pedidoCliente.telefono }}
+            <br />
+            <b>Estado:</b>
+            <span
+              v-if="pedidoCliente.estado == 'Pendiente'"
+              class="badge bg-warning"
+            >
+              {{ pedidoCliente.estado }}
+            </span>
+            <span
+              v-if="pedidoCliente.estado == 'En camino'"
+              class="badge bg-primary"
+            >
+              {{ pedidoCliente.estado }}
+            </span>
+            <span
+              v-if="pedidoCliente.estado == 'Entregado'"
+              class="badge bg-success"
+            >
+              {{ pedidoCliente.estado }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--pedidos del admin, todos los pedidos-->
     <div class="row" v-if="pedidos.length > 0 && usuario.rol == 'admin'">
       <div class="d-flex justify-content-between">
@@ -220,8 +292,6 @@
           />
         </div>
         <div class="card-body">
-          <!--mostar el nombre producto buscando por el producto_id en productos-->
-
           <h5 class="card-title">
             <b> Producto: </b>{{ pedido.producto_nombre }}
           </h5>
@@ -622,6 +692,7 @@ const imagen = ref("");
 const seleccionado = ref({});
 
 const pedidosVendedor = ref({});
+const pedidosCliente = ref({});
 
 const pedidos = ref({});
 
@@ -641,6 +712,7 @@ onMounted(() => {
   obtenerProductos();
   obtenerProductosVendedor();
   obtenerPedidosVendedor();
+  obtenerPedidosCliente();
   obtenerPedidos();
 });
 
@@ -649,6 +721,16 @@ const obtenerPedidosVendedor = async () => {
     const { data } = await axios.get(baseURL + "pedidos/usuario/" + usuario.id);
     pedidosVendedor.value = data.data;
     console.log("pedidos", pedidosVendedor.value);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const obtenerPedidosCliente = async () => {
+  try {
+    const { data } = await axios.get(baseURL + "pedidos/cliente/" + usuario.id);
+    pedidosCliente.value = data.data;
+    console.log("pedidos cliente", pedidosCliente.value);
   } catch (error) {
     console.log(error);
   }
